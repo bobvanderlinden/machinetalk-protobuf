@@ -28,18 +28,19 @@ ECHO := @echo
 SRCDIR := src
 PROTODIR := $(SRCDIR)/machinetalk/protobuf
 
+BUILDDIR := build
 
 # generated C++ headers + source files
-CXXGEN   := generated
+CXXGEN   := $(BUILDDIR)/cpp
 
 # generated Python files
-PYGEN    := python
+PYGEN    := $(BUILDDIR)/python
 
 # disable protobuf.js per default
 PROTOBUFJS := 0
 
 # directory for ProtoBuf.js generated files
-PROTOBUFJS_GEN := js
+PROTOBUFJS_GEN := $(BUILDDIR)/js
 
 # the proto2js compiler
 PROTOJS := $(shell which proto2js)
@@ -67,7 +68,7 @@ GPBINCLUDE :=  $(shell $(PKG_CONFIG) --variable=includedir protobuf)
 DESCDIR    :=  $(GPBINCLUDE)/google/protobuf
 
 # object files generated during dependency resolving
-OBJDIR := objects
+OBJDIR := $(BUILDDIR)/objects
 
 # search path for .proto files
 # see note on PBDEP_OPT below
@@ -75,6 +76,7 @@ vpath %.proto  $(PROTODIR):$(GPBINCLUDE):$(DESCDIR)/compiler
 
 # machinetalk/proto/*.proto derived Python bindings
 PROTO_PY_TARGETS := ${PROTO_SPECS:$(SRCDIR)/%.proto=$(PYGEN)/%_pb2.py}
+PROTO_PY_EXTRAS := $(PYGEN)/setup.py $(PYGEN)/machinetalk/__init__.py
 
 # generated C++ includes
 PROTO_CXX_INCS := ${PROTO_SPECS:$(SRCDIR)/%.proto=$(CXXGEN)/%.pb.h}
@@ -109,7 +111,8 @@ PBDEP_OPT += --vpath=$(DESCDIR)/compiler
 GENERATED += \
 	$(PROTO_CXX_SRCS)\
 	$(PROTO_CXX_INCS) \
-	$(PROTO_PY_TARGETS)
+	$(PROTO_PY_TARGETS) \
+	$(PROTO_PY_EXTRAS)
 
 ifeq ($(PROTOBUFJS),1)
 GENERATED += $(PROTO_PROTOBUFJS_SRCS) $(PROTOBUFJS_GEN)/nanopb.js
@@ -153,6 +156,9 @@ $(PYGEN)/%_pb2.py: $(SRCDIR)/%.proto
 		--python_out=$(PYGEN)/ \
 		$<
 
+$(PYGEN)/%.py: python/%.py
+	cp "$<" "$@"
+
 # ------------- ProtoBuf.js rules ------------
 #
 # see https://github.com/dcodeIO/ProtoBuf.js
@@ -187,4 +193,4 @@ ios_replace:
 	sh scripts/ios-replace.sh $(CXXGEN)
 
 clean:
-	rm -rf $(OBJDIR) $(CXXGEN) $(PYGEN)/**_pb2.py $(PROTO_PROTOBUFJS_SRCS)
+	rm -rf build
