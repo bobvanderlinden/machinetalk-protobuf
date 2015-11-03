@@ -168,7 +168,7 @@ $(PYGEN)/%.py: python/%.py
 # generate Javascript modules from proto files
 #=$(filter-out %/butterfly.ngc,$(call GLOB,../nc_files/*))
 
-$(PROTOBUFJS_GEN)/%.js: %.proto
+$(PROTOBUFJS_GEN)/%.js: $(SRCDIR)/%.proto
 	$(ECHO) $(PROTOJS)" create $@ from $<"
 	@mkdir -p $(PROTOBUFJS_GEN)
 	$(Q)$(PROTOJS) 	$< \
@@ -177,6 +177,7 @@ $(PROTOBUFJS_GEN)/%.js: %.proto
 
 # everything is namespace pb except nanopb.proto
 # # nanopb.proto needs different opts - no namespace argument
+ifeq ($(PROTOBUFJS),1)
 $(PROTOBUFJS_GEN)/nanopb.js: $(PROTODIR)/nanopb.proto
 	# $(ECHO) "HALLO"
 	# $(ECHO) $(PROTOJS)" create $@ from $<"
@@ -184,6 +185,7 @@ $(PROTOBUFJS_GEN)/nanopb.js: $(PROTODIR)/nanopb.proto
 	$(Q)$(PROTOJS) 	$< \
 	$(PROTOBUFJS_OPT) \
 	> $@
+endif
 
 # force create of %.proto-dependent files and their deps
 Makefile: $(GENERATED) $(PROTO_DEPS)
