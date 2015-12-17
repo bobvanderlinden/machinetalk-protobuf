@@ -6,4 +6,5 @@ addons:
       - protobuf-compiler
 
 script:
+  - ls -l /usr/include/google/protobuf/descriptor.proto
   - make all
