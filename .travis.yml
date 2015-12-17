@@ -1,0 +1,9 @@
+language: c
+
+addons:
+  apt:
+    packages:
+      - protobuf-compiler
+
+script:
+  - make all
