@@ -5,6 +5,7 @@ addons:
     packages:
       - protobuf-compiler
       - libprotobuf-dev
+      - python-protobuf
 
 script:
   - ls -l /usr/include/google/protobuf/descriptor.proto
