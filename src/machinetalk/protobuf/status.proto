@@ -12,44 +12,44 @@ package pb;
 /**
  *  Types for EMC task execution state.
  */
-enum EmcTaskExecStateType {
-    EMC_TASK_EXEC_ERROR                         = 1;  /// Error during task execution.
-    EMC_TASK_EXEC_DONE                          = 2;  /// Task execution has bee completed.
-    EMC_TASK_EXEC_WAITING_FOR_MOTION            = 3;  /// Task execution is waiting for Motion.
-    EMC_TASK_EXEC_WAITING_FOR_MOTION_QUEUE      = 4;  /// Task execution is waiting for Motion queue.
-    EMC_TASK_EXEC_WAITING_FOR_IO                = 5;  /// Task execution is waiting for IO.
-    EMC_TASK_EXEC_WAITING_FOR_MOTION_AND_IO     = 7;  /// Task execution is waiting for Motion and IO.
-    EMC_TASK_EXEC_WAITING_FOR_DELAY             = 8;  /// Task execution is waiting for a delay.
-    EMC_TASK_EXEC_WAITING_FOR_SYSTEM_CMD        = 9;  /// Task execution is waiting for a system command.
-    EMC_TASK_EXEC_WAITING_FOR_SPINDLE_ORIENTED  = 10; /// Task execution is waiting for spindle orientation to complete.
+enum TaskExecStateType {
+    TASK_EXEC_ERROR                             = 1;  /// Error during task execution.
+    TASK_EXEC_DONE                              = 2;  /// Task execution has bee completed.
+    TASK_EXEC_WAITING_FOR_MOTION                = 3;  /// Task execution is waiting for Motion.
+    TASK_EXEC_WAITING_FOR_MOTION_QUEUE          = 4;  /// Task execution is waiting for Motion queue.
+    TASK_EXEC_WAITING_FOR_IO                    = 5;  /// Task execution is waiting for IO.
+    TASK_EXEC_WAITING_FOR_MOTION_AND_IO         = 7;  /// Task execution is waiting for Motion and IO.
+    TASK_EXEC_WAITING_FOR_DELAY                 = 8;  /// Task execution is waiting for a delay.
+    TASK_EXEC_WAITING_FOR_SYSTEM_CMD            = 9;  /// Task execution is waiting for a system command.
+    TASK_EXEC_WAITING_FOR_SPINDLE_ORIENTED      = 10; /// Task execution is waiting for spindle orientation to complete.
 }
 
 /**
  * Types for EMC task interpreter state.
  */
-enum EmcInterpStateType {
-    EMC_TASK_INTERP_IDLE    = 1;  /// Task interpreter is idling.
-    EMC_TASK_INTERP_READING = 2;  /// Task interpreter is reading.
-    EMC_TASK_INTERP_PAUSED  = 3;  /// Task interpreter is paused.
-    EMC_TASK_INTERP_WAITING = 4;  /// Task interpreter is waiting.
+enum InterpStateType {
+    TASK_INTERP_IDLE        = 1;  /// Task interpreter is idling.
+    TASK_INTERP_READING = 2;  /// Task interpreter is reading.
+    TASK_INTERP_PAUSED      = 3;  /// Task interpreter is paused.
+    TASK_INTERP_WAITING = 4;  /// Task interpreter is waiting.
 }
 
 /**
  * Types for EMC interpreter exit codes.
  */
-enum EmcInterpExitCodeType {
-    EMC_INTERP_EXIT_OK              = 0;  /// Interpreter exited successfully.
-    EMC_INTERP_EXIT_EXIT            = 1;  /// Interpreter exited with no status information.
-    EMC_INTERP_EXIT_EXECUTE_FINISH  = 2;  /// Interpreter execution finished.
-    EMC_INTERP_EXIT_ENDFILE         = 3;  /// Interpreter has reached end of file.
-    EMC_INTERP_EXIT_FILE_NOT_OPEN   = 4;  /// Interpreter could not open the file.
-    EMC_INTERP_EXIT_ERROR           = 5;  /// Interpreter exited with an error.
+enum InterpExitCodeType {
+    INTERP_EXIT_OK                  = 0;  /// Interpreter exited successfully.
+    INTERP_EXIT_EXIT                = 1;  /// Interpreter exited with no status information.
+    INTERP_EXIT_EXECUTE_FINISH      = 2;  /// Interpreter execution finished.
+    INTERP_EXIT_ENDFILE             = 3;  /// Interpreter has reached end of file.
+    INTERP_EXIT_FILE_NOT_OPEN       = 4;  /// Interpreter could not open the file.
+    INTERP_EXIT_ERROR               = 5;  /// Interpreter exited with an error.
 }
 
 /**
  * EMC kinematics type.
  */
-enum EmcKinematicsType {
+enum KinematicsType {
     KINEMATICS_IDENTITY     = 1;  /// Identity kinematics.
     KINEMATICS_FORWARD_ONLY = 2;  /// Forward only kinematics.
     KINEMATICS_INVERSE_ONLY = 3;  /// Inverse only kinematics.
@@ -60,16 +60,16 @@ enum EmcKinematicsType {
 /**
  * Types for trajectory motion control.
  */
-enum EmcTrajectoryModeType {
-    EMC_TRAJ_MODE_FREE      = 1;  /// Independent axis motion.
-    EMC_TRAJ_MODE_COORD     = 2;  /// Coordinated axis motion.
-    EMC_TRAJ_MODE_TELEOP    = 3;  /// Velocity based world coordinates motion.
+enum TrajectoryModeType {
+    TRAJ_MODE_FREE          = 1;  /// Independent axis motion.
+    TRAJ_MODE_COORD         = 2;  /// Coordinated axis motion.
+    TRAJ_MODE_TELEOP        = 3;  /// Velocity based world coordinates motion.
 }
 
 /**
  * Types for EMC Canon units.
  */
-enum EmcCanonUnitsType {
+enum CanonUnitsType {
     CANON_UNITS_INCHES  = 1;  /// Inches.
     CANON_UNITS_MM      = 2;  /// Millimeters.
     CANON_UNITS_CM      = 3;  /// Centimeters.
@@ -78,7 +78,7 @@ enum EmcCanonUnitsType {
 /**
  * Types for EMC linear units.
  */
-enum EmcLinearUnitsType {
+enum LinearUnitsType {
     LINEAR_UNITS_INCHES = 1;  /// Inches.
     LINEAR_UNITS_MM     = 2;  /// Millimeters.
     LINEAR_UNITS_CM     = 3;  /// Centimeters.
@@ -87,7 +87,7 @@ enum EmcLinearUnitsType {
 /**
  * Types for EMC angular units.
  */
-enum EmcAngularUnitsType {
+enum AngularUnitsType {
     ANGULAR_UNITS_DEGREES = 1;  /// Degrees.
     ANGULAR_UNITS_RADIAN  = 2;  /// Radian.
     ANGULAR_UNITS_GRAD    = 3;  /// Grad.
@@ -96,7 +96,7 @@ enum EmcAngularUnitsType {
 /**
  * Types for EMC time units.
  */
-enum EmcTimeUnitsType {
+enum TimeUnitsType {
     TIME_UNITS_MINUTE  = 1;  /// Minutes.
     TIME_UNITS_SECOND  = 2;  /// Seconds.
 }
@@ -104,50 +104,50 @@ enum EmcTimeUnitsType {
 /**
  * Types for EMC task modes.
  */
-enum EmcTaskModeType {
-    EMC_TASK_MODE_MANUAL    = 1;  /// Manual task mode. For example jogging.
-    EMC_TASK_MODE_AUTO      = 2;  /// Automatic task mode. For example program execution.
-    EMC_TASK_MODE_MDI       = 3;  /// MDI task mode. MDI commands only.
+enum TaskModeType {
+    TASK_MODE_MANUAL        = 1;  /// Manual task mode. For example jogging.
+    TASK_MODE_AUTO          = 2;  /// Automatic task mode. For example program execution.
+    TASK_MODE_MDI           = 3;  /// MDI task mode. MDI commands only.
 }
 
 /**
  * Types for EMC task state.
  */
-enum EmcTaskStateType {
-    EMC_TASK_STATE_ESTOP        = 1;  /// Task is in ESTOP.
-    EMC_TASK_STATE_ESTOP_RESET  = 2;  /// Task is trying to reset an ESTOP.
-    EMC_TASK_STATE_OFF          = 3;  /// Task is turned off (no ESTOP)
-    EMC_TASK_STATE_ON           = 4;  /// Task is turned on.
+enum TaskStateType {
+    TASK_STATE_ESTOP            = 1;  /// Task is in ESTOP.
+    TASK_STATE_ESTOP_RESET      = 2;  /// Task is trying to reset an ESTOP.
+    TASK_STATE_OFF              = 3;  /// Task is turned off (no ESTOP)
+    TASK_STATE_ON               = 4;  /// Task is turned on.
 }
 
 /**
  * Axis types.
  */
-enum EmcAxisType {
-    EMC_AXIS_LINEAR     = 1;  /// Axis is using linear units.
-    EMC_AXIS_ANGULAR    = 2;  /// Axis is using angular units.
+enum AxisType {
+    AXIS_LINEAR         = 1;  /// Axis is using linear units.
+    AXIS_ANGULAR        = 2;  /// Axis is using angular units.
 }
 
 /**
  * Position offset types.
  */
-enum EmcPositionOffsetType {
-    EMC_CONFIG_RELATIVE_OFFSET = 1;  /// Offset in relative coordinates.
-    EMC_CONFIG_MACHINE_OFFSET = 2;   /// Offset in machine coordinates.
+enum PositionOffsetType {
+    CONFIG_RELATIVE_OFFSET = 1;  /// Offset in relative coordinates.
+    CONFIG_MACHINE_OFFSET = 2;   /// Offset in machine coordinates.
 }
 
 /**
  * Position feedback types.
  */
-enum EmcPositionFeedbackType {
-    EMC_CONFIG_ACTUAL_FEEDBACK = 1;     /// Feed back current position.
-    EMC_CONFIG_COMMANDED_FEEDBACK = 2;  /// Feed back commanded position.
+enum PositionFeedbackType {
+    CONFIG_ACTUAL_FEEDBACK = 1;     /// Feed back current position.
+    CONFIG_COMMANDED_FEEDBACK = 2;  /// Feed back commanded position.
 }
 
 /**
  * Tool table data.
  */
-message EmcToolData {
+message ToolData {
 
     option (nanopb_msgopt).msgid = 1100; // see README.msgid
 
@@ -173,7 +173,7 @@ message EmcToolData {
 /**
  * Stores per axis information from motion.
  */
-message EmcStatusMotionAxis {
+message StatusMotionAxis {
 
     option (nanopb_msgopt).msgid = 1101;
 
@@ -198,12 +198,12 @@ message EmcStatusMotionAxis {
 /**
  * Stores per axis information from configuration.
  */
-message EmcStatusConfigAxis {
+message StatusConfigAxis {
 
     option (nanopb_msgopt).msgid = 1102;
 
     required int32          index               = 1;  /// Axis index.
-    optional EmcAxisType    axis_type           = 2;  /// Type of axis. Reflects [AXIS_N]TYPE
+    optional AxisType       axis_type           = 2;  /// Type of axis. Reflects [AXIS_N]TYPE
     optional double         backlash            = 3;  /// Axis backlash. Reflects [AXIS_N]BACKLASH
     optional double         max_ferror          = 4;  /// Maximum following error. Reflects [AXIS_N]FERROR
     optional double         max_position_limit  = 5;  /// Maximum position limit. Reflects [AXIS_N]MAX_LIMIT
@@ -219,7 +219,7 @@ message EmcStatusConfigAxis {
 /**
  * Program extension message.
  */
-message EmcProgramExtension {
+message ProgramExtension {
 
     option (nanopb_msgopt).msgid = 1103;
 
@@ -230,7 +230,7 @@ message EmcProgramExtension {
 /**
  * Analog IO pin message.
  */
-message EmcStatusAnalogIO {
+message StatusAnalogIO {
 
     option (nanopb_msgopt).msgid = 1104;
 
@@ -241,7 +241,7 @@ message EmcStatusAnalogIO {
 /**
  * Digital IO pin message.
  */
-message EmcStatusDigitalIO {
+message StatusDigitalIO {
 
     option (nanopb_msgopt).msgid = 1105;
 
@@ -252,7 +252,7 @@ message EmcStatusDigitalIO {
 /**
  * Limit mask message.
  */
-message EmcStatusLimit {
+message StatusLimit {
 
     option (nanopb_msgopt).msgid = 1106;
 
@@ -263,7 +263,7 @@ message EmcStatusLimit {
 /**
  * Currently active GCodes message.
  */
-message EmcStatusGCode {
+message StatusGCode {
 
     option (nanopb_msgopt).msgid = 1107;
 
@@ -274,7 +274,7 @@ message EmcStatusGCode {
 /**
  * Currently active MCodes message.
  */
-message EmcStatusMCode {
+message StatusMCode {
 
     option (nanopb_msgopt).msgid = 1108;
 
@@ -285,7 +285,7 @@ message EmcStatusMCode {
 /**
  * Interpreter setting message.
  */
-message EmcStatusSetting {
+message StatusSetting {
 
     option (nanopb_msgopt).msgid = 1109;
 
@@ -296,26 +296,26 @@ message EmcStatusSetting {
 /**
  * EMC status configuration message.
  */
-message EmcStatusConfig {
+message StatusConfig {
 
     option (nanopb_msgopt).msgid = 1110;
 
     optional double                     default_acceleration     = 1;  /// Default acceleration. Reflects parameter [TRAJ]DEFAULT_ACCELERATION.
     //optional double                     angular_units            = 2;  // Angular units scale. Reflects [TRAJ]ANGULAR_UNITS field removed
     optional int32                      axes                     = 3;  /// Number of axes. Reflects [TRAJ]AXES
-    repeated EmcStatusConfigAxis        axis                     = 4;  /// Per axis configuration values.
+    repeated StatusConfigAxis           axis                     = 4;  /// Per axis configuration values.
     optional int32                      axis_mask                = 5;  /// Mask of axes. Reflects [TRAJ]COORDINATES and returns the sum of the axes X=1, Y=2, Z=4, A=8, B=16, C=32, U=64, V=128, W=256.
     optional double                     cycle_time               = 6;  /// Polling cycle time. Reflects [TRAJ]CYCLE_TIME
     optional int32                      debug                    = 7;  /// Debug flag.
-    optional EmcKinematicsType          kinematics_type          = 8;  /// Kinematics type.
+    optional KinematicsType             kinematics_type          = 8;  /// Kinematics type.
     //optional double                     linear_units             = 9;  // Linear units scale. Reflects [TRAJ]LINEAR_UNITS field removed
     optional double                     max_acceleration         = 10; /// Maximum acceleration. Reflects [TRAJ]MAX_ACCELERATION
     optional double                     max_velocity             = 11; /// Maximum velocity. Reflects [TRAJ]MAX_VELOCITY
-    optional EmcLinearUnitsType         linear_units             = 12; /// Linear machine units. Reflects [TRAJ]LINEAR_UNITS
+    optional LinearUnitsType            linear_units             = 12; /// Linear machine units. Reflects [TRAJ]LINEAR_UNITS
     optional double                     default_velocity         = 13; /// Default velocity. Reflects [TRAJ]DEFAULT_VELOCITY
-    repeated EmcProgramExtension        program_extension        = 14; /// List if program supported program extensions.
-    optional EmcPositionOffsetType      position_offset          = 15; /// Position offset type. Reflects [DISPLAY]POSITION_OFFSET
-    optional EmcPositionFeedbackType    position_feedback        = 16; /// Position feedback type. Reflects [DISPLAY]POSITION_FEEDBACK
+    repeated ProgramExtension           program_extension        = 14; /// List if program supported program extensions.
+    optional PositionOffsetType         position_offset          = 15; /// Position offset type. Reflects [DISPLAY]POSITION_OFFSET
+    optional PositionFeedbackType       position_feedback        = 16; /// Position feedback type. Reflects [DISPLAY]POSITION_FEEDBACK
     optional double                     max_feed_override        = 17; /// Maximum feed override. Reflects [DISPLAY]MAX_FEED_OVERRIDE
     optional double                     min_feed_override        = 18; /// Minimum feed override. Reflects [DISPLAY]MIN_FEED_OVERRIDE
     optional double                     max_spindle_override     = 19; /// Maximum spindle speed override. Reflects [DISPLAY]MAX_SPINDLE_OVERRIDE
@@ -335,32 +335,32 @@ message EmcStatusConfig {
     optional uint32                     arcdivision              = 33; /// Display granularity for arcs. Reflects [DISPLAY]ARCDIVISION
     optional bool                       no_force_homing          = 34; /// Do not enforce homing. Reflects [DISPLAY]NO_FORCE_HOMING
     optional string                     remote_path              = 35; /// Remote file path. Reflects [DISPLAY]PROGRAM_PREFIX
-    optional EmcTimeUnitsType           time_units               = 36; /// Time units type. Reflects [DISPLAY]TIME_UNITS
+    optional TimeUnitsType              time_units               = 36; /// Time units type. Reflects [DISPLAY]TIME_UNITS
     optional string                     name                     = 37; /// Machine name. Reflects [EMC]MACHINE
-    repeated EmcStatusUserCommand       user_command             = 38; /// List of user commands. Reflects [DISPLAY]USER_COMMAND
-    optional EmcAngularUnitsType        angular_units            = 39; /// Angular machine units. Reflects [TRAJ]ANGULAR_UNITS
+    repeated StatusUserCommand          user_command             = 38; /// List of user commands. Reflects [DISPLAY]USER_COMMAND
+    optional AngularUnitsType           angular_units            = 39; /// Angular machine units. Reflects [TRAJ]ANGULAR_UNITS
 }
 
 /**
  * EMC status motion message.
  */
-message EmcStatusMotion {
+message StatusMotion {
 
     option (nanopb_msgopt).msgid = 1111;
 
     optional int32                  active_queue            = 1;  /// Number of motions blending.
     optional Position               actual_position         = 2;  /// Current trajectory position.
     optional bool                   adaptive_feed_enabled   = 3;  /// Status of adaptive feed override.
-    repeated EmcStatusAnalogIO      ain                     = 4;  /// Status of analog input pins.
-    repeated EmcStatusAnalogIO      aout                    = 5;  /// Status of analog output pins.
-    repeated EmcStatusMotionAxis    axis                    = 6;  /// Per axis motion values.
+    repeated StatusAnalogIO         ain                     = 4;  /// Status of analog input pins.
+    repeated StatusAnalogIO         aout                    = 5;  /// Status of analog output pins.
+    repeated StatusMotionAxis       axis                    = 6;  /// Per axis motion values.
     optional bool                   block_delete            = 7;  /// Block delete on or off.
     optional int32                  current_line            = 8;  /// Currently executing line.
     optional double                 current_vel             = 9;  /// Current velocity in Cartesian space.
     optional double                 delay_left              = 10; /// Remaining time on dwell (G4) command.
-    repeated EmcStatusDigitalIO     din                     = 11; /// Status of digital input pins.
+    repeated StatusDigitalIO        din                     = 11; /// Status of digital input pins.
     optional double                 distance_to_go          = 12; /// Remaining distance of current move reported by trajectory planner.
-    repeated EmcStatusDigitalIO     dout                    = 13; /// Status of digital output pins.
+    repeated StatusDigitalIO        dout                    = 13; /// Status of digital output pins.
     optional Position               dtg                     = 14; /// Remaining distance of current move reported by trajectory planner.
     optional bool                   enabled                 = 15; /// Trajectory planner enabled flag.
     optional bool                   feed_hold_enabled       = 16; /// Enable flag for feed hold.
@@ -373,10 +373,10 @@ message EmcStatusMotion {
     optional bool                   inpos                   = 24; /// Machine in position flag.
     optional Position               joint_actual_position   = 25; /// Actual joint position.
     optional Position               joint_position          = 26; /// Desired joint position.
-    repeated EmcStatusLimit         limit                   = 27; /// Axis limit masks.
+    repeated StatusLimit            limit                   = 27; /// Axis limit masks.
     optional int32                  motion_line             = 28; /// Source line number motion is currently executing. Relation to id is unclear.
     optional MotionType             motion_type             = 29; /// Trajectory planner mode.
-    optional EmcTrajectoryModeType  motion_mode             = 30; /// Trajectory mode.
+    optional TrajectoryModeType     motion_mode             = 30; /// Trajectory mode.
     optional bool                   paused                  = 31; /// Motion paused flag.
     optional Position               position                = 32; /// Trajectory position.
     optional bool                   probe_tripped           = 33; /// True if probe has tripped.
@@ -401,7 +401,7 @@ message EmcStatusMotion {
 /**
  * EMC IO message.
  */
-message EmcStatusIo {
+message StatusIo {
 
     option (nanopb_msgopt).msgid = 1112;
 
@@ -413,13 +413,13 @@ message EmcStatusIo {
     optional bool           pocket_prepped  = 6;  /// A Tx command completed and this pocket is prepared. TODO wrong type?
     optional bool           tool_in_spindle = 7;  /// Current tool number.
     optional Position       tool_offset     = 8;  /// Offset values of the current tool.
-    repeated EmcToolData    tool_table      = 9;  /// List of tool entries.
+    repeated ToolData       tool_table      = 9;  /// List of tool entries.
 }
 
 /**
  * EMC status task message.
  */
-message EmcStatusTask {
+message StatusTask {
 
     option (nanopb_msgopt).msgid = 1113;
 
@@ -429,37 +429,37 @@ message EmcStatusTask {
      * its serial number is reflected in echo_serial_number.
      */
     optional int32                  echo_serial_number  = 1;
-    optional EmcTaskExecStateType   exec_state          = 2;  /// Task execution state.
+    optional TaskExecStateType      exec_state          = 2;  /// Task execution state.
     optional string                 file                = 3;  /// Currently executing gcode file.
     optional bool                   input_timeout       = 4;  /// Flag for M66 timer in progress.
     optional bool                   optional_stop       = 5;  /// Optional stop enabled.
     optional int32                  read_line           = 6;  /// Line the RS274NGC interpreter is currently reading. TODO move to interp
-    optional EmcTaskModeType        task_mode           = 7;  /// Current task mode.
+    optional TaskModeType           task_mode           = 7;  /// Current task mode.
     optional int32                  task_paused         = 8;  /// Task paused.
-    optional EmcTaskStateType       task_state          = 9;  /// Current task state.
+    optional TaskStateType          task_state          = 9;  /// Current task state.
     optional int32                  total_lines         = 10; /// Total number of lines of currently active program file.
 }
 
 /**
  * EMC status interpreter message.
  */
-message EmcStatusInterp {
+message StatusInterp {
 
     option (nanopb_msgopt).msgid = 1114;
 
     optional string                 command             = 1;  /// Currently executing command.
-    repeated EmcStatusGCode         gcodes              = 2;  /// Currently active GCodes.
-    optional EmcInterpStateType     interp_state        = 3;  /// Current state of RS274NGC interpreter.
-    optional EmcInterpExitCodeType  interpreter_errcode = 4;  /// Current RS274NGC interpreter return code.
-    repeated EmcStatusMCode         mcodes              = 5;  /// Currently active MCodes.
-    repeated EmcStatusSetting       settings            = 6;  /// Current interpreter settings. [0] = sequence number, [1] = feed rate, [2] = velocity
-    optional EmcCanonUnitsType      program_units       = 7;  /// Current interpreter program units.
+    repeated StatusGCode            gcodes              = 2;  /// Currently active GCodes.
+    optional InterpStateType        interp_state        = 3;  /// Current state of RS274NGC interpreter.
+    optional InterpExitCodeType     interpreter_errcode = 4;  /// Current RS274NGC interpreter return code.
+    repeated StatusMCode            mcodes              = 5;  /// Currently active MCodes.
+    repeated StatusSetting          settings            = 6;  /// Current interpreter settings. [0] = sequence number, [1] = feed rate, [2] = velocity
+    optional CanonUnitsType         program_units       = 7;  /// Current interpreter program units.
 }
 
 /**
  * EMC command parameters.
  */
-message EmcCommandParameters {
+message CommandParameters {
 
     option (nanopb_msgopt).msgid = 1115;
 
@@ -473,17 +473,17 @@ message EmcCommandParameters {
     optional bool                   enable = 8;       /// General purpose enable value.
     optional string                 command = 9;      /// General purpose command string.
     optional string                 path = 10;        /// General purpose path string.
-    optional EmcTaskModeType        task_mode = 100;  /// Task mode.
-    optional EmcTaskStateType       task_state = 101; /// Task state.
-    optional EmcTrajectoryModeType  traj_mode = 102;  /// Trajectory mode.
-    optional EmcPose                pose = 103;       /// General purpose pose.
-    optional EmcToolData            tool_data = 104;  /// Tool data.
+    optional TaskModeType           task_mode = 100;  /// Task mode.
+    optional TaskStateType          task_state = 101; /// Task state.
+    optional TrajectoryModeType     traj_mode = 102;  /// Trajectory mode.
+    optional Pose                   pose = 103;       /// General purpose pose.
+    optional ToolData               tool_data = 104;  /// Tool data.
 }
 
 /**
  * User command message.
  */
-message EmcStatusUserCommand {
+message StatusUserCommand {
 
     option (nanopb_msgopt).msgid = 1116;
 

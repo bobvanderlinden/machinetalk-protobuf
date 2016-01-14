@@ -18,7 +18,7 @@ message PmCartesian {
     optional double z = 30;
 };
 
-message EmcPose {
+message Pose {
 
     option (nanopb_msgopt).msgid = 301;
 
@@ -41,7 +41,7 @@ message EmcPose {
 //     required double z = 30;
 // };
 
-// message EmcPose {
+// message Pose {
 //     required PmCartesian  tran = 10;
 
 //     required double a = 20;

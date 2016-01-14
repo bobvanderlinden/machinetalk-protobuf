@@ -37,5 +37,5 @@ message Value {
 
     // compound types
     optional PmCartesian       carte   = 200;
-    optional EmcPose           pose    = 220;
+    optional Pose              pose    = 220;
 }
